@@ -1,0 +1,19 @@
+# Replace main if you used a different index.
+
+# 1. Show all imported lab events
+index=main sourcetype=security_lab
+
+# 2. Find failed login events
+index=main sourcetype=security_lab "Failed login"
+
+# 3. Count events by severity
+index=main sourcetype=security_lab | stats count by level
+
+# 4. Count failed logins by source IP
+index=main sourcetype=security_lab "Failed login" | stats count by src_ip
+
+# 5. Count blocked inbound connections by source IP
+index=main sourcetype=security_lab "Blocked inbound connection" | stats count by src_ip
+
+# 6. Display useful fields as a table
+index=main sourcetype=security_lab | table _time host level user src_ip message

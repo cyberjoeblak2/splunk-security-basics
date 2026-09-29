@@ -1,0 +1,6 @@
+# Keep local secrets and real datasets out of Git
+.env
+*.pem
+*.key
+credentials*
+private-logs/
